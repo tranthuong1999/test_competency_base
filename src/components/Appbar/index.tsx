@@ -118,41 +118,42 @@ const Appbar = () => {
             <div className='btn_create_list'>
                 <button className='btn_create_list' onClick={() => setOpenContact(true)}>+ Create list</button>
             </div>
-            <TableContainer component={Paper} style={{ marginTop: 20 }}>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Tag</TableCell>
-                            <TableCell>Subfield</TableCell>
-                            <TableCell>Label</TableCell>
-                            <TableCell>Mandatory</TableCell>
-                            <TableCell>Actions</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {listContact?.map((item: any) => (
-                            <TableRow key={item.id}>
-                                <TableCell>{item.tag}</TableCell>
-                                <TableCell>{item.sub_field}</TableCell>
-                                <TableCell>{item.label}</TableCell>
-                                <TableCell>{item.mandotory}</TableCell>
-                                <TableCell>
-                                    {item.sub_field !== "#" && (
-                                        <>
-                                            <Button variant="contained" color="primary" size="small" onClick={() => handleEdit(item)}>
-                                                Edit
-                                            </Button>
-                                            <Button variant="contained" color="secondary" size="small" onClick={() => dispatch(deleteItemContact(item))} style={{ marginLeft: 10 }}>
-                                                Delete
-                                            </Button>
-                                        </>
-                                    )}
-                                </TableCell>
+            {listContact && listContact.length > 0 &&
+                <TableContainer component={Paper} style={{ marginTop: 20 }}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Tag</TableCell>
+                                <TableCell>Subfield</TableCell>
+                                <TableCell>Label</TableCell>
+                                <TableCell>Mandatory</TableCell>
+                                <TableCell>Actions</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                        </TableHead>
+                        <TableBody>
+                            {listContact?.map((item: any) => (
+                                <TableRow key={item.id}>
+                                    <TableCell>{item.tag}</TableCell>
+                                    <TableCell>{item.sub_field}</TableCell>
+                                    <TableCell>{item.label}</TableCell>
+                                    <TableCell>{item.mandotory}</TableCell>
+                                    <TableCell>
+                                        {item.sub_field !== "#" && (
+                                            <>
+                                                <Button variant="contained" color="primary" size="small" onClick={() => handleEdit(item)}>
+                                                    Edit
+                                                </Button>
+                                                <Button variant="contained" color="secondary" size="small" onClick={() => dispatch(deleteItemContact(item))} style={{ marginLeft: 10 }}>
+                                                    Delete
+                                                </Button>
+                                            </>
+                                        )}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>}
             <BasicModal
                 open={openContact}
                 onClose={() => setOpenContact(false)}
