@@ -1,55 +1,23 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-// Middleware gọi API (Redux Thunk)
-export const fetchUser = createAsyncThunk(
-    "user/fetchUser",
-    async (userId: string, { rejectWithValue }) => {
-        try {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
-            if (!response.ok) throw new Error("User not found");
-            return await response.json();
-        } catch (error: any) {
-            return rejectWithValue(error.message);
-        }
-    }
-);
-
-// Định nghĩa state
-interface UserState {
-    data: any;
-    loading: boolean;
-    error: string | null;
-    user: {}
-}
-
-// Khởi tạo state ban đầu
-const initialState: UserState = {
-    data: null,
-    loading: false,
-    error: null,
-    user: {}
+const initialState = {
+  name: 'John',
+  age: 30,
 };
 
-// Reducer cập nhật state
 const userSlice = createSlice({
-    name: "user",
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchUser.pending, (state) => {
-                state.loading = true;
-                state.error = null;
-            })
-            .addCase(fetchUser.fulfilled, (state, action: PayloadAction<any>) => {
-                state.loading = false;
-                state.data = action.payload;
-            })
-            .addCase(fetchUser.rejected, (state, action: PayloadAction<any>) => {
-                state.loading = false;
-                state.error = action.payload;
-            });
+  name: 'user',
+  initialState,
+  reducers: {
+    setName: (state, action) => {
+      state.name = action.payload;
     },
+    setAge: (state, action) => {
+      state.age = action.payload;
+    },
+  },
 });
+
+export const { setName, setAge } = userSlice.actions;
 
 export default userSlice.reducer;

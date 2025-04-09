@@ -1,14 +1,14 @@
-import { ProductProvider } from "./ProductContext";
-import { FilterableProductTable } from "./FilterableProductTable";
+import { ProductProvider } from './ProductContext';
+import { FilterableProductTable } from './FilterableProductTable';
 
 function TestUI() {
-    return (
-        <ProductProvider>
-            <div>
-                <FilterableProductTable />
-            </div>
-        </ProductProvider>
-    );
+  return (
+    <ProductProvider>
+      <div>
+        <FilterableProductTable />
+      </div>
+    </ProductProvider>
+  );
 }
 
 export default TestUI;

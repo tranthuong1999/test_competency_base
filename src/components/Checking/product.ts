@@ -1,11 +1,11 @@
-export interface Product {
+export type Product = {
   category: string;
   price: string;
   stocked: boolean;
   name: string;
-}
+};
 
-export const PRODUCTS: Product[] = [
+export const PRODUCTS = [
   { category: 'Fruits', price: '$1', stocked: true, name: 'Apple' },
   { category: 'Fruits', price: '$1', stocked: true, name: 'Dragonfruit' },
   { category: 'Fruits', price: '$2', stocked: false, name: 'Passionfruit' },

@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
 interface ProductCategoryRowProps {
-    category: string;
+  category: string;
 }
 
 export default function ProductCategoryRow({ category }: ProductCategoryRowProps) {
-    return (
-        <tr>
-            <th colSpan={2} style={{ textAlign: "left" }}>
-                {category}
-            </th>
-        </tr>
-    );
+  return (
+    <tr>
+      <th colSpan={2} style={{ textAlign: 'left' }}>
+        {category}
+      </th>
+    </tr>
+  );
 }
